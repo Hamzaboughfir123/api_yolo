@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv8 Pole Detection</title>
+</head>
+<body>
+    <div>
+        <h1>YOLOv8 Pole Detection</h1>
+        <h2>Uploaded Image:</h2>
+        <img src="{{ url_for('static', filename='images/' + filename) }}" alt="Uploaded Image" width="300" height="=350">
+        <h2>Detection Data:</h2>
+        <pre>{{ detection_data }}</pre>
+    </div>
+</body>
+</html>

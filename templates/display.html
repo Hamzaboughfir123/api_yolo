@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Image and Detection Data</title>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .detection-data {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uploaded Image with Pole Detection</h1>
+    <img src="{{ url_for('static', filename='images/' + filename) }}" alt="Uploaded Image">
+
+    <div class="detection-data">
+        <h2>Detection Data:</h2>
+        <pre>{{ detection_data }}</pre>
+    </div>
+</body>
+</html>

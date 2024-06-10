@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv8 Pole Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Ajout de marge à droite pour séparer les boutons */
+        }
+        .json-button {
+            padding: 10px 20px;
+            background-color: #28a745; /* Couleur de fond verte */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .json-button:hover {
+            background-color: #218838; /* Couleur de fond verte plus foncée au survol */
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 480px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YOLOv8 Pole/Lamp Detection</h1>
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Detect Pole</button>
+            <a href="{{ url_for('display_with_json', filename='uploaded_image.jpg') }}" class="json-button">View JSON Data</a>
+        </form>
+        <form action="{{ url_for('upload_lum') }}" method="post" enctype="multipart/form-data">  <!-- Utilisation de la route 'upload_lum' -->
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Detect lamp</button>
+            <a href="{{ url_for('display_with_json', filename='uploaded_image_lamp.jpg') }}" class="json-button">View JSON Data</a>  <!-- Utilisation du bon nom de fichier -->
+</form>
+
+        {% if uploaded_image %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ url_for('static', filename='images/' + uploaded_image) }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+</body>
+</html>
